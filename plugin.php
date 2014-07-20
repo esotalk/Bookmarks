@@ -117,6 +117,8 @@ class ETPlugin_Bookmarks extends ETPlugin {
 	// Register the "bookmarked" gambit with the search model.
 	public function handler_conversationsController_init($sender)
 	{
+		if (!ET::$session->user) return;
+		
 		ET::searchModel(); // Load the search model so we can add this gambit.
 		ETSearchModel::addGambit('return $term == strtolower(T("gambit.bookmarked"));', array($this, "gambitBookmarked"));
 	}
