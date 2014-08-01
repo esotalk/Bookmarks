@@ -126,6 +126,8 @@ class ETPlugin_Bookmarks extends ETPlugin {
 	// Register a menu item for the "order by views" gambit.
 	public function handler_conversationsController_constructGambitsMenu($sender, &$gambits)
 	{
+		if (!ET::$session->user) return;
+		
 		addToArrayString($gambits["main"], T("gambit.bookmarked"), array("gambit-bookmarked", "icon-bookmark"));
 	}
 
